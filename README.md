@@ -1,3 +1,7 @@
+# DEPRECATED
+
+### A better alternative is [Screenshot Home Assistant using Puppeteer](https://github.com/balloob/home-assistant-addons/tree/main/puppet), which can be installed as a Home Assistant Addon, or a Docker service.
+
 # Home Assistant Lovelace Kindle Screensaver
 
 ![ci](https://github.com/sibbl/hass-lovelace-kindle-screensaver/workflows/ci/badge.svg)

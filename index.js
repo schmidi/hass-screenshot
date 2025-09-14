@@ -49,6 +49,7 @@ var mqttClient = {};
 
   console.log("Starting browser...");
   let browser = await puppeteer.launch({
+    ignoreDefaultArgs: [ '--disable-extensions' ],
     args: [
       "--disable-dev-shm-usage",
       "--no-sandbox",
@@ -92,7 +93,7 @@ var mqttClient = {};
     renderAndConvertAsync(browser);
     if (!config.realTime) {
       console.log("Starting rendering cronjob...");
-      new CronJob({
+      CronJob.from({
         cronTime: config.cronJob,
         onTick: () => renderAndConvertAsync(browser),
         start: true
@@ -102,7 +103,7 @@ var mqttClient = {};
 
   const httpServer = http.createServer(async (request, response) => {
     // Parse the request
-    console.log(`received request from ${request.connection.remoteAddress} for ${request.url}`);
+    console.log(`received request from ${request.socket.remoteAddress} for ${request.url}`);
 
     // support to kill the process
     if (request.url == '/exit') {

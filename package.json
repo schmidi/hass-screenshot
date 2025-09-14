@@ -9,10 +9,10 @@
   "author": "sibbl",
   "license": "MIT",
   "dependencies": {
-    "cron": "^1.8.2",
-    "fs-extra": "^10.0.0",
-    "gm": "^1.23.1",
-    "mqtt": "^4.3.7",
-    "puppeteer": "^11.0.0"
+    "cron": "^4.3.3",
+    "fs-extra": "^11.3.1",
+    "gm": "^1.25.1",
+    "mqtt": "^5.14.1",
+    "puppeteer": "^24.20.0"
   }
 }

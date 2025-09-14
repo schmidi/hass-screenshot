@@ -12,7 +12,7 @@ jobs:
     steps:
       -
         name: QEMU Setup
-        uses: docker/setup-qemu-action@v3.0.0
+        uses: docker/setup-qemu-action@v3.6.0
       -
         name: Checkout
         uses: actions/checkout@v3

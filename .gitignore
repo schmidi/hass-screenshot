@@ -5,3 +5,4 @@ output/
 
 /.vs
 /.vscode
+docker-compose.local.yml

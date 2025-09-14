@@ -7,6 +7,7 @@ const fsExtra = require("fs-extra");
 const puppeteer = require("puppeteer");
 const { CronJob } = require("cron");
 const gm = require("gm");
+const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 // Overwriting
 console.logReal = console.log;
@@ -51,6 +52,10 @@ var mqttClient = {};
   let browser = await puppeteer.launch({
     ignoreDefaultArgs: [ '--disable-extensions' ],
     args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-accelerated-2d-canvas',
+      '--disable-gpu',
       "--disable-dev-shm-usage",
       "--no-sandbox",
       `--lang=${config.language}`,
@@ -374,7 +379,10 @@ async function renderUrlToImageAsync(browser, pageConfig, url, path) {
     });
 
     if (pageConfig.renderingDelay > 0) {
-      await page.waitForTimeout(pageConfig.renderingDelay);
+      (async () => {
+        await sleep(pageConfig.renderingDelay);
+      })();
+      // await setTimeout(parseInt(pageConfig.renderingDelay));
     }
     await page.screenshot({
       path,
